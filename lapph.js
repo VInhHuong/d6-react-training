@@ -1,19 +1,23 @@
 const Title = (props) => {
     const {name, src, desc} = props
+
     return (
-    <div className="container">
-        <div className="left">
-            <img src={src} className="image"></img>
+    <div className="trReContainer">
+        <div className="trReLeft">
+            <img src={src} className="trReImage"></img>
         </div>
-        <div className="right">
-            <div className="name">{name}</div>
-            <div className="desc">{desc}</div>
+        <div className="trReRight">
+            <div className="trReName">{name}</div>
+            <div className="trReDesc">{desc}</div>
         </div>
     </div>
     )
 }
 
 ReactDOM.render(
-  <Title name="Phạm Hữu Lập" src="./image/vinhhuong.png" desc="i am React developer" />,
+  <Title 
+    name="Phạm Hữu Lập" 
+    src="https://i.postimg.cc/xd3T94BV/vinhhuong.png" 
+    desc="i am React developer" />,
   document.getElementById('lapph')
 );
