@@ -1,0 +1,30 @@
+.trReContainer{
+    background-color: #ffffff;
+    width: 250px;
+    border-radius:  10px 0px;
+    display: flex;
+    padding: 5 0 7 10;
+    margin-left: 10px;
+    box-shadow: 2px 7px #ededed
+}
+.trReImage{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.trReLeft{
+    margin-right: 8px;
+}
+.trReRight{
+    justify-content: center;
+}
+.trReName{
+    font-size: 15px;
+    font-weight: bold;
+    color: black;
+}
+.trReDesc{
+    font-size: 13px;
+    margin-top: -2px;
+}
