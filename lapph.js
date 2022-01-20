@@ -226,18 +226,6 @@ const initData = [
                 </table>
               </div> 
             </div> 
-            <form onSubmit={(e) => {
-              e.preventDefault()
-              this.handleSubmit()
-            }
-              }>
-              <input
-                styles={{
-                  backGroundColor: 'yellow',
-                }}
-                ref={this.inputRef} name="name" onChange={(e) => this.setState({name: e.target.value})} value={this.state.name} id="name"></input>
-              <button type="submit">add</button>
-            </form>
         </div>
       )
     }
