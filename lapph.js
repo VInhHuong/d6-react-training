@@ -101,6 +101,14 @@ const initData = [
       super(props);
       this.inputRef = React.createRef();
       this.state = {dataTable1: initData, dataTable2: [], name: ''}
+      super(props)
+      this.state = {
+        dataTable1: initData, 
+        dataTable2: [], 
+        name: '',
+        age: '',
+        form: {}
+      }
     }
   
     handleClick(index, item, type, e){
@@ -118,51 +126,105 @@ const initData = [
         : [...this.state.dataTable1, item]
       })
     }
-    handleSubmit() {
-     const nameDOM =  document.getElementById('name');
-     console.log(this.inputRef)
+
+    handleInputChange(event) {
+      const target = event.target
+      const value = target.value
+      const name = target.name
+
+      this.setState({
+        [name]: value
+      });
+    }
+
+    handleSubmit(event) {
+      event.preventDefault()
+
+      if(!this.state.name || !this.state.age) return
+
+      const data = [
+        ...this.state.dataTable1,
+        {
+          ...this.state.form,
+          name : this.state.name,
+          age: this.state.age
+        }
+      ]
+      this.setState({
+        dataTable1 : data 
+      })
     }
   
     render() {
       const dataTable1 = this.state.dataTable1
       const dataTable2 = this.state.dataTable2
       return (
-        <div className="transferContainer">
-            <div className="tableLeft">
-              <table>
-                <tr>
-                  <th>Name</th>
-                  <th>Age</th>
-                  <th>Action</th>
-                </tr>
-                {dataTable1 && dataTable1.map((item,index) => {
-                  return (
-                    <tr key={index}>
-                      <td>{item.name}</td>
-                      <td>{item.age}</td>
-                      <td><button onClick={(e) => this.handleClick(index, item, TRANSFER_TYPE.TRANSFER1, e)}>transferData1</button></td>
-                    </tr>
-                  )
-                })}
-              </table>
+          <div className="transferContainer">
+            <div className="trReform">
+              <form onSubmit={(e) => this.handleSubmit(e)}>
+                  <div>
+                    Name:
+                  </div>
+                  <input
+                    name="name"
+                    type="text"
+                    value={this.state.name}
+                    className="trReMargin"
+                    onChange={(e) => this.handleInputChange(e)} 
+                  />
+                  <br />
+                  <div>
+                    Age:
+                  </div>
+                  <input
+                    name="age"
+                    type="text"
+                    value={this.state.age}
+                    className="trReMargin"
+                    onChange={(e) => this.handleInputChange(e)} 
+                  />
+                  <div className="trReSubmit">
+                    <input type="submit" value="Add" className="trReInputSubmit"/>
+                  </div> 
+                </form>
             </div>
-            <div className="tableRight">
-              <table>
+            <div className="trReTable">
+              <div className="tableLeft">
+                <table>
                   <tr>
                     <th>Name</th>
                     <th>Age</th>
                     <th>Action</th>
                   </tr>
-                  {dataTable2 && dataTable2.map((item,index) => {
-                  return (
-                    <tr key={index}>
-                      <td>{item.name}</td>
-                      <td>{item.age}</td>
-                      <td><button onClick={(e) => this.handleClick(index, item, TRANSFER_TYPE.TRANSFER2, e)}>transferData2</button></td>
+                  {dataTable1 && dataTable1.map((item,index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{item.name}</td>
+                        <td>{item.age}</td>
+                        <td><button onClick={(e) => this.handleClick(index, item, TRANSFER_TYPE.TRANSFER1, e)}>transferData1</button></td>
+                      </tr>
+                    )
+                  })}
+                </table>
+              </div>
+              <div className="tableRight">
+                <table>
+                    <tr>
+                      <th>Name</th>
+                      <th>Age</th>
+                      <th>Action</th>
                     </tr>
-                  )
-                })}
-              </table>
+                    {dataTable2 && dataTable2.map((item,index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{item.name}</td>
+                        <td>{item.age}</td>
+                        <td><button onClick={(e) => this.handleClick(index, item, TRANSFER_TYPE.TRANSFER2, e)}>transferData2</button></td>
+                      </tr>
+                    )
+                  })}
+                </table>
+              </div> 
             </div> 
             <form onSubmit={(e) => {
               e.preventDefault()
