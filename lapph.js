@@ -95,10 +95,12 @@ const initData = [
   //     super(props);
   //     this.state = {date: new Date()};
   //   }
+
   class TransferData extends React.Component {
     constructor(props) {
-      super(props)
-      this.state = {dataTable1: initData, dataTable2: []}
+      super(props);
+      this.inputRef = React.createRef();
+      this.state = {dataTable1: initData, dataTable2: [], name: ''}
     }
   
     handleClick(index, item, type, e){
@@ -116,11 +118,14 @@ const initData = [
         : [...this.state.dataTable1, item]
       })
     }
+    handleSubmit() {
+     const nameDOM =  document.getElementById('name');
+     console.log(this.inputRef)
+    }
   
     render() {
       const dataTable1 = this.state.dataTable1
       const dataTable2 = this.state.dataTable2
-  
       return (
         <div className="transferContainer">
             <div className="tableLeft">
@@ -159,12 +164,24 @@ const initData = [
                 })}
               </table>
             </div> 
+            <form onSubmit={(e) => {
+              e.preventDefault()
+              this.handleSubmit()
+            }
+              }>
+              <input
+                styles={{
+                  backGroundColor: 'yellow',
+                }}
+                ref={this.inputRef} name="name" onChange={(e) => this.setState({name: e.target.value})} value={this.state.name} id="name"></input>
+              <button type="submit">add</button>
+            </form>
         </div>
       )
     }
   }
-  
+
   ReactDOM.render(
-    <TransferData />,
+    <TransferData  />,
     document.getElementById('lapph')
   );
