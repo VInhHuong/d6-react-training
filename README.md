@@ -17,3 +17,7 @@ Viết component Card cho phép nhận vào các props src, name, desc để hi�
 ## Bài tập 2
 
 Viết component hoạt đông như trên web sau https://bai2-4226f.web.app
+
+## Bài tập 3
+
+Thêm chức năng tạo bản ghi cho ứng dụng đã làm ở bài 2 như  https://bai2-4226f.web.app
