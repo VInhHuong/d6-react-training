@@ -1,0 +1,39 @@
+.member-content {
+    width: 100%;
+    margin-top: 40px;
+}
+.add-new-form {
+    display: flex;
+}
+.input-field {
+    margin-right: 8px;
+}
+.form-input {
+    display: flex;
+}
+label {
+    margin-right: 4px;
+}
+.error-message {
+    color: red;
+    margin-top: 8px;
+}
+.table-list {
+    display: flex;
+    width: 100%;
+    margin-top: 40px;
+}
+#table1 {
+    width: 50%;
+    margin-right: 16px;
+}
+
+#table2 {
+    width: 50%;
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+}
